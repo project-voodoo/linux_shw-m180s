@@ -22,6 +22,10 @@
 #include "wm8994.h"
 #include "wm8994_def.h"
 
+#ifdef CONFIG_SND_VOODOO
+#include "wm8994_voodoo.h"
+#endif
+
 #define SUBJECT "wm8994_p1.c"
 
 
@@ -1263,6 +1267,10 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 			
 		wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_VOLUME, val);
 	}
+
+#ifdef CONFIG_SND_VOODOO_RECORD_PRESETS
+	voodoo_hook_record_main_mic();
+#endif
 
 	val = wm8994_read(codec,WM8994_POWER_MANAGEMENT_4);
 	val &= ~(WM8994_ADCL_ENA_MASK |WM8994_AIF1ADC1L_ENA_MASK);
