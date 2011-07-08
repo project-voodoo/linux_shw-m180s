@@ -136,7 +136,7 @@ static ssize_t headphone_eq_b##band##_gain_show(struct device *dev,	       \
 					 struct device_attribute *attr,	       \
 					 char *buf)			       \
 {									       \
-	return sprintf(buf, "%d\n", eq_gains[band-1]);			       \
+	return sprintf(buf, "%d\n", eq_gains[band - 1]);		       \
 }
 
 #define DECLARE_EQ_GAIN_STORE(band)					       \
